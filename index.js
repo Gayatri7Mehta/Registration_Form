@@ -10,10 +10,10 @@ const port = process.env.PORT || 3000;
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
-// MongoDB Atlas connection string
+
 const mongoUri = `mongodb+srv://${username}:${password}@cluster0.whzfogd.mongodb.net/dbform`;
 
-// MongoDB model for registration
+
 const Registration = mongoose.model('Registration', new mongoose.Schema({
     name: String,
     email: String,
@@ -61,18 +61,18 @@ app.get("/error", (req, res) => {
     res.sendFile(__dirname + "/error.html");
 });
 
-// Connect to MongoDB Atlas
+
 mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-// Display a message when successfully connected to MongoDB
+
 mongoose.connection.on('connected', () => {
     console.log('Connected to MongoDB Atlas');
 });
 
-// Handle MongoDB connection errors
+
 mongoose.connection.on('error', (err) => {
     console.error(`MongoDB connection error: ${err}`);
 });
