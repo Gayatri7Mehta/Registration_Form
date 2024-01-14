@@ -8,6 +8,8 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 
+app.use(express.static("public"));
+
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 
